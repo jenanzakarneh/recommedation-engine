@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Box, Flex } from '@chakra-ui/react'
 import ProductCard from '../components/ProductCard'
 import Sidebar from '../components/bars/Sidebar'
+import Navbar from '../components/bars/Navbar'
 const Home = () => {
     const [productsList, setProductsList] = useState([{
         price: 100,
@@ -23,12 +24,14 @@ const Home = () => {
         title: 'P2'
     }])
     return (
-        <Flex bg='white' h={'100vh'} w={'100%'} color={'black'}>
-            <Flex wrap={'wrap'} w={'80%'}>
-                {productsList.map((product) => <ProductCard title={product.title} imageSrc={product.image} price={product.price} />)}
+        <Flex bg='white' h={'100vh'} w={'100%'} color={'black'} direction={'column'}>
+            <Navbar />
+            <Flex  >
+                <Flex wrap={'wrap'} w={'80%'} align={'center'} justify={'start'} gap={6} px={20}>
+                    {productsList.map((product) => <ProductCard title={product.title} imageSrc={product.image} price={product.price} />)}
+                </Flex>
+                <Sidebar />
             </Flex>
-            <Sidebar />
-
         </Flex>
     )
 }

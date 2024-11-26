@@ -5,7 +5,7 @@ const Sidebar = () => {
     const viewRequestList = () => { console.log('viewing requests') }
     const logout = () => { console.log('logging out') }
     return (
-        <Flex w={'20%'} h={"100vh"} bg={'#9B9B75'} color={'white'} >
+        <Flex w={'20%'} h={'93vh'} bg={'#9B9B75'} color={'white'} >
             <VStack color={'white'} w={'100%'} mt={80}>
                 <Box py={3} w={'full'} borderBottom={'1px'} borderColor={'white'} >
                     <Button bg={'none'} color={'white'} gap={4} py={10} _hover={{ textDecor: 'underline' }} onClick={() => { }}>

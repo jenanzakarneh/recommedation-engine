@@ -2,6 +2,8 @@ import { Routes, Route } from 'react-router-dom';
 import Login from './Pages/Login';
 import Signup from './Pages/Signup';
 import Home from './Pages/Home';
+import Profile from './Pages/Profile';
+import RequestList from './Pages/RequestList';
 
 function App() {
   return (
@@ -10,7 +12,9 @@ function App() {
         <Route path="/" element={<Login/>} />
          <Route path="/home" element={<Home/>} />
         <Route path='/login' element={<Login />} />
-        <Route path='/signup' element={ <Signup/>} />
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/profile' element={<Profile />} />
+        <Route path='request-list' element={ <RequestList/>} />
    </Routes>
     </div>
   );

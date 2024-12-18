@@ -1,6 +1,8 @@
-import { Flex, HStack, VStack, Text } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import ChartItem from '../components/ChartItem'
+import Navbar from '../components/bars/Navbar'
+
 const RequestList = () => {
     const [userRequestList, setUserRequestList] = useState([{
         id: '1234',
@@ -11,9 +13,12 @@ const RequestList = () => {
     }])
     return (
         <Flex bg='white' h={'100vh'} w={'100%'} color={'black'} direction={'column'}>
-
+            <Navbar />
+            <Flex p={3} direction={'column'} gap={3}>
             {userRequestList.map((userRequest) => <ChartItem id={userRequest.id} imageSrc={userRequest.imageSrc} description={userRequest.description} stock={userRequest.stock} price={userRequest.price} status={userRequest.status} />)
-            }        </Flex>
+            }
+            </Flex>
+        </Flex>
     )
 }
 

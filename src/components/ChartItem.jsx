@@ -2,6 +2,7 @@ import { Flex, HStack, Image, VStack, Text, Box } from '@chakra-ui/react'
 import React from 'react'
 
 const ChartItem = ({ imageSrc, description, stock, price, status, id }) => {
+    const handleDelete = () => { }
     return (
         <Flex w={'full'} boxShadow={'md'} py={2} px={10}>
 
@@ -21,7 +22,7 @@ const ChartItem = ({ imageSrc, description, stock, price, status, id }) => {
                 </VStack>
 
             </HStack>
-            <HStack w={'50%'} align={'center' } justify={'space-evenly'}>
+            <HStack w={'50%'} align={'center'} justify={'space-evenly'}>
                 <VStack>
                     <Text textAlign='center' fontSize={'s'} color={'#6a6767c3'} lineHeight={'.5'}>Stock</Text>
                     <Box bg='#9B9B75' p={2} color={'white'} borderRadius={'lg'}>
@@ -40,10 +41,10 @@ const ChartItem = ({ imageSrc, description, stock, price, status, id }) => {
                         <Text textAlign='center' fontSize={'xl'}>{status}</Text>
                     </Box>
                 </VStack>
-                <VStack>
+                <VStack onClick={handleDelete}>
                     <Text textAlign='center' fontSize={'s'} color={'#6a6767c3'} lineHeight={'.5'}>Price</Text>
-                    <Box bg='red' p={2} color={'white'} borderRadius={'lg'}>
-                        <Text textAlign='center' fontSize={'xl'}>delete</Text>
+                    <Box bg='red' px={4} py={2} color={'white'} borderRadius={'lg'}>
+                        <Text textAlign='center' fontSize={'xl'} fontWeight={'bold'}>X</Text>
                     </Box>
                 </VStack>
             </HStack>

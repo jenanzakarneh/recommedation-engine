@@ -6,6 +6,7 @@ import Profile from './Pages/Profile';
 import RequestList from './Pages/RequestList';
 import AdminRequestList from './Pages/AdminRequestList';
 import Chart from './Pages/Chart';
+import UserAddItem from './Pages/UserAddItem';
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
         <Route path='/profile' element={<Profile />} />
         <Route path='/request-list' element={<RequestList />} />
         <Route path='/admin-request-list' element={<AdminRequestList />} />
-        <Route path='/chart' element={<Chart/>} />
+        <Route path='/chart' element={<Chart />} />
+        <Route path='/user-add-item' element={ <UserAddItem/>} />
    </Routes>
     </div>
   );

@@ -9,6 +9,7 @@ import Chart from './Pages/Chart';
 import UserAddItem from './Pages/UserAddItem';
 import WelcomePage from './Pages/WelcomePage';
 import ConfirmAdmin from './Pages/ConfirmAdmin';
+import ViewProduct from './Pages/ViewProduct';
 function App() {
   return (
     <div >
@@ -24,6 +25,7 @@ function App() {
         <Route path='/user-add-item' element={<UserAddItem />} />
         <Route path='/welcome-page' element={<WelcomePage />} />
         <Route path='/confirm-admin' element={<ConfirmAdmin />} />
+        <Route path='/view-product' element={ <ViewProduct/>} />
    </Routes>
     </div>
   );

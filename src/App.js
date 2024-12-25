@@ -7,6 +7,7 @@ import RequestList from './Pages/RequestList';
 import AdminRequestList from './Pages/AdminRequestList';
 import Chart from './Pages/Chart';
 import UserAddItem from './Pages/UserAddItem';
+import WelcomePage from './Pages/WelcomePage';
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
         <Route path='/request-list' element={<RequestList />} />
         <Route path='/admin-request-list' element={<AdminRequestList />} />
         <Route path='/chart' element={<Chart />} />
-        <Route path='/user-add-item' element={ <UserAddItem/>} />
+        <Route path='/user-add-item' element={<UserAddItem />} />
+        <Route path='/welcome-page' element={<WelcomePage/>}/>
    </Routes>
     </div>
   );

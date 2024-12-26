@@ -3,7 +3,7 @@ import { Box, HStack } from '@chakra-ui/react'
 import { Card, CardHeader, CardBody, CardFooter, Divider, Image, Stack, Heading, Text, ButtonGroup, Button } from '@chakra-ui/react'
 const ProductCard = ({ imageSrc, title, price }) => {
     return (
-        <Card maxW='300px'h={'fit-content'} bg={'white'} color={'gray'}>
+        <Card maxW='300px' h={'fit-content'} bg={'white'} color={'gray'} >
             <CardBody>
                 <Image
                     src={imageSrc}

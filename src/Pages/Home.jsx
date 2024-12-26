@@ -1,39 +1,61 @@
-import React, { useState } from 'react'
-import { Box, Flex } from '@chakra-ui/react'
-import ProductCard from '../components/ProductCard'
-import Sidebar from '../components/bars/Sidebar'
-import Navbar from '../components/bars/Navbar'
+import React, { useEffect, useState } from 'react';
+import { Box, Flex } from '@chakra-ui/react';
+import ProductCard from '../components/ProductCard';
+import Sidebar from '../components/bars/Sidebar';
+import Navbar from '../components/bars/Navbar';
+import axios from 'axios'; // Make sure axios is installed
+ 
 const Home = () => {
-    const [productsList, setProductsList] = useState([{
-        price: 100,
-        image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80',
-        title: 'P1'
-    },
-    {
-        price: 300,
-        image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80',
-        title: 'P2'
-    },
-    {
-        price: 300,
-        image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80',
-        title: 'P2'
-    }, {
-        price: 300,
-        image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80',
-        title: 'P2'
-    }])
+    const [productsList, setProductsList] = useState([]);
+ 
+    // Function to fetch recommendations
+    const fetchRecommendations = async () => {
+        const userId = localStorage.getItem('user_id'); // Retrieve user_id from localStorage
+        if (!userId) {
+            console.error('User ID not found in localStorage');
+            return;
+        }
+ 
+        try {
+            const response = await axios.get(`http://127.0.0.1:8000/recommendations/${userId}`);
+            const recommendations = response.data.recommendations;
+ 
+            // Map API response to expected structure for ProductCard
+            const formattedProducts = recommendations.map(product => ({
+                price: product.Price,
+                image: product.ImageURL,
+                title: `Product ${product.product_id}`, // You can replace this with the actual product title if available
+            }));
+ 
+            setProductsList(formattedProducts);
+        } catch (error) {
+            console.error('Error fetching recommendations:', error);
+        }
+    };
+ 
+    // Fetch recommendations when the component mounts
+    useEffect(() => {
+        fetchRecommendations();
+    }, []);
+ 
     return (
-        <Flex bg='white' h={'100vh'} w={'100%'} color={'black'} direction={'column'}>
-            <Navbar />
-            <Flex  >
-                <Flex wrap={'wrap'} w={'80%'} align={'center'} justify={'start'} gap={6} px={20}>
-                    {productsList.map((product) => <ProductCard title={product.title} imageSrc={product.image} price={product.price} />)}
-                </Flex>
-                <Sidebar />
-            </Flex>
-        </Flex>
-    )
-}
-
-export default Home
+<Flex bg='white' h={'100vh'} w={'100%'} color={'black'} direction={'column'}>
+<Navbar />
+<Flex>
+<Flex wrap={'wrap'} w={'80%'} align={'center'} justify={'start'} gap={6} px={20}>
+                    {productsList.map((product, index) => (
+<ProductCard 
+                            key={index}
+                            title={product.title} 
+                            imageSrc={product.image} 
+                            price={product.price} 
+                        />
+                    ))}
+</Flex>
+<Sidebar />
+</Flex>
+</Flex>
+    );
+};
+ 
+export default Home;

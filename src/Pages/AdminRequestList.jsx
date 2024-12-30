@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Flex } from '@chakra-ui/react';
+import { Flex,Box } from '@chakra-ui/react';
 import Navbar from '../components/bars/Navbar';
 import AdminCard from '../components/AdminCard';
-
+import { useNavigate } from 'react-router-dom';
 const AdminRequestList = () => {
     const [cardItems, setCardItems] = useState([]);
 
@@ -42,19 +42,26 @@ const AdminRequestList = () => {
 
         fetchRequests();
     }, []); // Empty dependency array ensures this effect runs only once after the component mounts
+    const navigate = useNavigate();
 
+
+const handleItemClick=(id)=>{
+    navigate(`/confirm-admin?request_id=${id}`)
+}
     return (
         <Flex bg="white" h="100vh" w="100%" color="black" direction="column">
             <Navbar />
-            <Flex p={3} gap={3}>
+            <Flex p={3} gap={3} wrap={'wrap'}>
                 {cardItems.map((item) => (
-                    <AdminCard
-                        key={item.id}
-                        productName={item.productName}
-                        id={item.id}
-                        imageSrc={item.imageSrc}
-                        userName={item.userName}
-                    />
+                    <Box onClick={()=>handleItemClick(item.id)}>
+                        <AdminCard
+                            key={item.id}
+                            productName={item.productName}
+                            id={item.id}
+                            imageSrc={item.imageSrc}
+                            userName={item.userName}
+                        />
+                    </Box>
                 ))}
             </Flex>
         </Flex>

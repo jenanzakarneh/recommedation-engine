@@ -42,7 +42,7 @@ const ChartItem = ({ imageSrc, description, stock, price, status, id }) => {
                     </Box>
                 </VStack>
                 <VStack onClick={handleDelete}>
-                    <Text textAlign='center' fontSize={'s'} color={'#6a6767c3'} lineHeight={'.5'}>Price</Text>
+                 
                     <Box bg='red' px={4} py={2} color={'white'} borderRadius={'lg'}>
                         <Text textAlign='center' fontSize={'xl'} fontWeight={'bold'}>X</Text>
                     </Box>

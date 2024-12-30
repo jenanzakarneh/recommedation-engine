@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/bars/Navbar';
 import { Flex, HStack, Input, Text, Textarea, VStack, Select, Button, Image, Box } from '@chakra-ui/react';
 
-const UserAddItem = () => {
+const AdminAddItem = () => {
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState(0);
   const [gender, setGender] = useState('');
@@ -251,7 +251,7 @@ const UserAddItem = () => {
               />
             </VStack>
             <Button w="full" bg="#9B9B75" _hover={{}} onClick={handleAddItem}>
-              Send Request
+              Add Item
             </Button>
           </HStack>
         </Flex>
@@ -260,4 +260,4 @@ const UserAddItem = () => {
   );
 };
 
-export default UserAddItem;
+export default AdminAddItem;
